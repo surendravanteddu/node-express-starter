@@ -25,7 +25,7 @@ yarn install && yarn start:dev
 }
 ```
 
-#### Get User 
+### Get User 
 
 ###### Bearer token is required to get user info
 
