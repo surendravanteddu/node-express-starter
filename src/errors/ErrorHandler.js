@@ -29,7 +29,7 @@ export default class ErrorHandler {
       }
     }
 
-    if (!error.suppressStackTrace) {
+    if (!error.suppressStackTrace && config.env === 'development') {
       json.error.stack = ErrorStackParser.parse(error)
     }
 
