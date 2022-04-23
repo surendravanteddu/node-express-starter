@@ -1,12 +1,14 @@
 ### How to run
 
+Create .env file in the root directory and copy/paste content from example.env into .env 
+
 ```sh
 yarn install && yarn start:dev 
 ```
 
 ### Authentication
 
-``/login``
+``POST - /login``
 
 #### Request body
 ```
@@ -27,7 +29,7 @@ yarn install && yarn start:dev
 
 ###### Bearer token is required to get user info
 
-``/user``
+``GET - /user``
 
 ###### Headers
 ``` 
