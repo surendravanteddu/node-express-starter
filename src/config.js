@@ -10,6 +10,8 @@ const env = process.env.NODE_ENV || 'development'
 
 const config = {
   app: {
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD,
     port: parseInt(process.env.APP_PORT || 18880, 10),
     rootPath: rootPath,
     logging: {
@@ -29,15 +31,11 @@ const config = {
     defaultFrom: process.env.EMAIL_DEFAULT_FROM || 'email@gmail.com',
     adminEmail: process.env.ADMIN_EMAIL || 'email@gmail.com'
   },
-  db: {
-    host: process.env.DB_HOSTNAME,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectionLimit: process.env.DB_CONNECTION_LIMIT
-  },
   env: env,
-  password_secret: process.env.PASSWORD_SECRET
+  appToken: {
+    secret: process.env.JWT_SECRET,
+    expiresIn: process.env.JWT_EXPIRES_IN
+  }
 }
 
 export default config
