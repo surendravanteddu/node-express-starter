@@ -1,5 +1,5 @@
 ### How to run
 
 ```sh
-yarn install && yarn start 
+yarn install && yarn start:dev 
 ```
