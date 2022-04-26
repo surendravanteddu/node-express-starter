@@ -40,7 +40,7 @@ export default class Contact {
 
   createContacts = (size) => {
     const maxId = this.data.length
-    for (let i = maxId; i <= maxId + size; i++) {
+    for (let i = maxId + 1; i <= maxId + size; i++) {
       this.createContact(i)
     }
   }
@@ -56,8 +56,16 @@ export default class Contact {
       const contacts = []
       pageNo = +pageNo
       pageSize = +pageSize
-      const firstId = ((pageNo - 1) * pageSize) + 1
-      let totalCount = firstId + pageSize
+
+      if (isNaN(pageNo)) {
+        pageNo = 1
+      }
+      if (isNaN(pageSize)) {
+        pageSize = 25
+      }
+
+      const firstIndex = ((pageNo - 1) * pageSize)
+      let totalCount = firstIndex + pageSize
 
       if (totalCount > 1000) {
         totalCount = 1000
@@ -67,7 +75,7 @@ export default class Contact {
         this.createContacts(totalCount - this.data.length)
       }
 
-      for (let i = firstId; i < firstId + pageSize; i++) {
+      for (let i = firstIndex; i < firstIndex + pageSize; i++) {
         const contact = this.data[i]
         if (contact) {
           contacts.push(contact)
@@ -77,6 +85,49 @@ export default class Contact {
       return contacts
     } catch (e) {
       return []
+    }
+  }
+
+  getById = (id) => {
+    try {
+      id = +id
+      if (isNaN(id) || id > 1000) {
+        return null
+      }
+
+      if (id > this.data.length) {
+        this.createContacts(id - this.data.length)
+      }
+
+      return this.data.find(contact => contact.id === id)
+    } catch (e) {
+      return null
+    }
+  }
+
+  updateById = (id, record) => {
+    try {
+      id = +id
+      if (isNaN(id) || id > 1000) {
+        return null
+      }
+
+      if (id > this.data.length) {
+        this.createContacts(id - this.data.length)
+      }
+
+      const contactIndex = this.data.findIndex(contact => contact.id === id)
+      if (contactIndex === -1) {
+        return null
+      }
+
+      let contact = this.data[contactIndex]
+      contact = {...contact, ...record, id: id}
+      this.data[contactIndex] = contact
+
+      return contact
+    } catch (e) {
+      return null
     }
   }
 }

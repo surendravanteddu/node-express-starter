@@ -91,3 +91,53 @@ Total records count is 1000
     }
 ]
 ```
+``GET - /contacts/1`` 
+
+#### Response body
+
+```
+{
+    "id": 1,
+    "name": "Lena Cannon",
+    "dob": "1971-12-04T05:06:23.580Z",
+    "ssn": "268-22-4430",
+    "phone": "3283453077",
+    "address": "665 Menta Turnpike",
+    "city": "Ducobzo",
+    "zip": "63689",
+    "state": "Mississippi",
+    "avatar": "//www.gravatar.com/avatar/512bb7c0278ff136dfcbd12d1220c707",
+    "company": "Chiquita Brands International Inc.",
+    "email": "okpagut@vu.tl",
+    "role": "Lead Meteorologist"
+}
+```
+``PUT|PATCH - /contacts/1`` 
+
+
+#### Request body
+```
+     { 
+       "name": "Lena Cannon1"
+     }
+```
+
+#### Response body
+
+```
+{
+    "id": 1,
+    "name": "Lena Cannon1",
+    "dob": "1971-12-04T05:06:23.580Z",
+    "ssn": "268-22-4430",
+    "phone": "3283453077",
+    "address": "665 Menta Turnpike",
+    "city": "Ducobzo",
+    "zip": "63689",
+    "state": "Mississippi",
+    "avatar": "//www.gravatar.com/avatar/512bb7c0278ff136dfcbd12d1220c707",
+    "company": "Chiquita Brands International Inc.",
+    "email": "okpagut@vu.tl",
+    "role": "Lead Meteorologist"
+}
+```
