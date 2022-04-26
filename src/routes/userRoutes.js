@@ -1,13 +1,19 @@
 import {Router} from 'express'
 
-const router = Router()
+export default class UserRoutes {
+  registerRoutes = () => {
+    const router = Router()
 
-router.get('/', (req, res) => {
-  res.send({
-    firstname: 'Ron',
-    lastname: 'J',
-    email: 'ron.j@miviewis.com'
-  })
-})
+    router.get('/', this.getUser)
 
-export default router
+    return router
+  }
+
+  getUser = (req, res) => {
+    res.send({
+      firstname: 'Ron',
+      lastname: 'J',
+      email: 'ron.j@miviewis.com'
+    })
+  }
+}

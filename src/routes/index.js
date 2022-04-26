@@ -1,10 +1,14 @@
 import {Router} from 'express'
-import userRoutes from './userRoutes'
 import {Logger} from '../logger'
 import config from '../config'
 import {generateToken, getUserFromToken} from '../utils'
 import {AuthenticationError} from '../errors'
+import ContactRoutes from './contactRoutes'
+import UserRoutes from './userRoutes'
 const router = Router()
+
+const contactRoutes = new ContactRoutes()
+router.use('/contacts', contactRoutes.registerRoutes())
 
 router.post('/login', (req, res) => {
   try {
@@ -43,6 +47,7 @@ router.use((req, res, next) => {
   next(new AuthenticationError('Invalid token'))
 })
 
-router.use('/user', userRoutes)
+const userRoutes = new UserRoutes()
+router.use('/users', userRoutes.registerRoutes())
 
 export default router
