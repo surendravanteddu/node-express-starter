@@ -91,6 +91,9 @@ Total records count is 1000
     }
 ]
 ```
+
+### Get Contact by id
+
 ``GET - /contacts/1`` 
 
 #### Response body
@@ -112,6 +115,9 @@ Total records count is 1000
     "role": "Lead Meteorologist"
 }
 ```
+
+### Update Contact by id
+
 ``PUT|PATCH - /contacts/1`` 
 
 
