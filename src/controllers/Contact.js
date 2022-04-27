@@ -1,4 +1,5 @@
 import Chance from 'chance'
+import moment from 'moment'
 
 export default class Contact {
   constructor () {
@@ -16,10 +17,12 @@ export default class Contact {
   createContact = (id) => {
     try {
       const chance = this.getChanceInstance()
+      const dob = chance.birthday()
+      const age = moment().diff(moment(dob), 'years')
       const contact = {
         id: id,
         name: chance.name(),
-        dob: chance.birthday(),
+        dob,
         ssn: chance.ssn(),
         phone: chance.phone({formatted: false}),
         address: chance.address(),
@@ -29,7 +32,8 @@ export default class Contact {
         avatar: chance.avatar(),
         company: chance.company(),
         email: chance.email(),
-        role: chance.profession({rank: true})
+        role: chance.profession({rank: true}),
+        age
       }
       this.data.push(contact)
       return contact
